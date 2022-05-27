@@ -11,14 +11,14 @@
 
 <?php foreach($listaLibros as $libro) { ?>
 
-    <div class="col-md-3">
+    <div class="col-md-2">
 
         <div class="card">
-            <img class="card-img-top" src="../img/<?php echo $libro['imagen']; ?>" width="300" height="380">
+            <img class="card-img-top" src="../img/<?php echo $libro['imagen']; ?>" width="100%" height="200">
             
             <div class="card-body">
-                <h4 class="card-title"><?php echo $libro['nombre']; ?></h4>
-                <a name="" id="" class="btn btn-primary" href="" role="button">Ver más</a>
+                <h5 class="card-title"><?php echo $libro['nombre']; ?></h5>
+                <a name="" id="" class="btn btn-primary" href="<?php echo $libro['direccion']; ?>" role="button">Ver más</a>
             </div>
         </div>
         <br>

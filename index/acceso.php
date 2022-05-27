@@ -1,4 +1,5 @@
 <?php
+    
     session_start();
     if($_POST){
         if(($_POST['usuario']=="admin")&&($_POST['contrasenia']=="password")){
@@ -36,7 +37,7 @@
                 <br><br><br>
                 <div class="card">
                     <div class="card-header">
-                        Login de Administrador
+                        Login de Usuario
                     </div>
                     <div class="card-body">
 
@@ -59,6 +60,9 @@
                             </div>
                                                     
                             <button type="submit" class="btn btn-primary">Ingresar</button>
+
+                            <a href="index.php"><button type="button" class="btn btn-info" >Salir</button></a>
+
                         </form>
                         
  

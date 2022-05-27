@@ -35,7 +35,7 @@
 
           <a class="nav-item nav-link" href="<?php echo $url;?>/administrador/seccion/productos.php">Libros</a>
 
-          <a class="nav-item nav-link" href="<?php echo $url;?>/index/index.php">Ver sitio web</a>
+          <a class="nav-item nav-link" href="<?php echo $url;?>/index/inicio.php">Ver sitio web</a>
 
           <a class="nav-item nav-link" href="<?php echo $url;?>/administrador/seccion/cerrar.php">Cerrar</a>
       </div>

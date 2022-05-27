@@ -5,13 +5,14 @@
 $txtID=(isset($_POST['txtID']))?$_POST['txtID']:"";
 $txtNombre=(isset($_POST['txtNombre']))?$_POST['txtNombre']:"";
 $txtImagen=(isset($_FILES['txtImagen']))?$_FILES['txtImagen']['name']:"";
+$txtDireccion=(isset($_POST['txtDireccion']))?$_POST['txtDireccion']:"";
 $accion=(isset($_POST['accion']))?$_POST['accion']:"";
 
 include("../config/bd.php");
 
 switch($accion){
     case "Agregar";
-        $sentenciaSQL=$conexion->prepare("INSERT INTO libros (nombre,imagen) VALUES (:nombre,:imagen);");
+        $sentenciaSQL=$conexion->prepare("INSERT INTO libros (nombre,imagen,direccion) VALUES (:nombre,:imagen,:direccion);");
         $sentenciaSQL->bindParam(':nombre',$txtNombre);
 
         $fecha= new DateTime();
@@ -24,15 +25,18 @@ switch($accion){
         }
 
         $sentenciaSQL->bindParam(':imagen',$nombreArchivo);
+        $sentenciaSQL->bindParam(':direccion',$txtDireccion);
         $sentenciaSQL->execute();
+
         header("Location:productos.php");
         break;
 
     case "Modificar":
 
-        $sentenciaSQL=$conexion->prepare("UPDATE libros SET nombre=:nombre WHERE id=:id");
+        $sentenciaSQL=$conexion->prepare("UPDATE libros SET nombre=:nombre, direccion=:direccion WHERE id=:id");
         $sentenciaSQL->bindParam(':nombre',$txtNombre);
         $sentenciaSQL->bindParam(':id',$txtID);
+        $sentenciaSQL->bindParam(':direccion',$txtDireccion);
         $sentenciaSQL->execute();
 
         if($txtImagen!=""){
@@ -81,6 +85,7 @@ switch($accion){
 
         $txtNombre=$libro['nombre'];
         $txtImagen=$libro['imagen'];
+        $txtDireccion=$libro['direccion'];
 
         break;
 
@@ -140,12 +145,17 @@ $listaLibros=$sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
 
                 <?php if($txtImagen!=""){ ?>
                     <center>
-                    <img class="img-thumbnail rounded" src="../../img/<?php echo $txtImagen; ?>" width="50" srcset=""/>
+                    <img class="img-thumbnail rounded" src="../../img/<?php echo $txtImagen; ?>" width="50">
                     
                     </center>
                 <?php } ?>
                 <br>
                 <input type="file" class="form-control" name="txtImagen" id="txtImagen">
+            </div>
+
+            <div class="form-group">
+                <label for="txtDireccion">Direccion web:</label>
+                <input type="text" class="form-control" value="<?php echo $txtDireccion; ?>" name="txtDireccion" id="txtDireccion" placeholder="direccion web" >
             </div>
 
             <div class="btn-group" role="group" aria-label="">
@@ -161,7 +171,7 @@ $listaLibros=$sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
    
 </div>
 
-<div class="col-md-8">
+<div class="col-md-7">
 
     <table class="table table-bordered">
         <thead>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Sugerencias y reclamos</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body id="titulo">
+    <header id="container">
+        <img id="avatar" src="./my.jpg" alt="mi avatar" />
+        <h1>Bienvenidos, al sitio de sugerencias y reclamos, <br>
+            tu opinión es importante para nosotros</h1>
+    </header>
+    <section class="container">
+        <article class="post">
+            <h2>Ingresa tus datos de contacto:</h2>
+            <form action="./formulario.html" method="post">
+            <p>
+                <label for="nombre">
+                    <span>Nombre: </span>
+                    <input type="text" id="nombre" placeholder="Ingresa tu Nombre" required="">
+                </label>
+            </p>
+            <p>
+                <label for="email">
+                    <span>E-Mail: </span>
+                    <input type="email" id="email" placeholder="Ingresa tu corre electrónico" required="" >
+                    <br>
+                </label>
+            </p>
+            <p>
+                <label for="comentario">Comentario:</label><br>
+                <textarea name="comentario" id="comentario" cols="50" rows="10" placeholder="Ingrese su comentario" required=""></textarea>
+            </p>
+            <p class="boton">
+                <input type="submit" value="enviar" >
+            </p>
+        </form>
+        </article>
+    </section>
+    <footer>
+        <section>
+           <a href="#titulo">Inicio</a>
+           <a href="mailto:juan.palma.alvarez@gmail.com">Contáctame aquí</a>
+       </section>
+       <p>Copyright 2021®</p>
+   </footer>
+</body>
+</html>
